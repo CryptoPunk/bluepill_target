@@ -1,0 +1,16 @@
+[env:bluepill]
+platform = ststm32
+board = bluepill_f103c8
+framework = stm32cube
+lib_deps = jeeh
+upload_protocol = custom 
+upload_command =
+  $PLATFORMIO_CORE_DIR/packages/tool-openocd/bin/openocd
+  -f openocd.cfg
+  -c "program ($SOURCE)"
+debug_tool = custom
+debug_server =
+  $PLATFORMIO_CORE_DIR/packages/tool-openocd/bin/openocd
+  -f openocd.cfg
+  -c 'attach ()'
+
